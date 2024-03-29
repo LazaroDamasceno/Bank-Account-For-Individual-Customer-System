@@ -7,11 +7,16 @@ export const DeleteAllCustomers = () => {
     }
 
     return (
-        <div>
-            <form onSubmit={deleteAll}>
-                <input className="btn btn-warning" type="submit" value="Delete all customers" />
-            </form>   
-        </div>
+        <>
+            <head>
+                <title>Delete all customers</title>
+            </head>
+            <body>
+                <form onSubmit={deleteAll}>
+                    <input className="btn btn-warning" type="submit" value="Delete all customers" />
+                </form>   
+            </body>
+        </>
     )
 
 }

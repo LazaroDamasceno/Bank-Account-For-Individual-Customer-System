@@ -21,70 +21,77 @@ export const RegisterCustomer= () => {
     }
 
     return (
-        <form onSubmit={registerCustomer}>
-            <div>
-                <div>
-                    <label>Name: </label>
-                    <input 
-                        type="text"
-                        value={customer.name}
-                        name="name"
-                        onChange={handleChange}
-                    />
-                </div>
-                <br /><br />
-                <div>
-                    <label>Ssn: </label>
-                    <input 
-                        type="text"
-                        value={customer.ssn}
-                        name="ssn"
-                        onChange={handleChange}
-                    />
-                </div>
-                <br /><br />
-                <div>
-                    <label>Birth Day: </label> 
-                    <input 
-                        type="text"
-                        value={customer.birthDay}
-                        name="birthDay"
-                        onChange={handleChange}
-                    />
-                </div>
-                <br /><br />
-                <div>
-                    <label>Email: </label>
-                    <input 
-                        type="email"
-                        value={customer.email}
-                        name="email"
-                        onChange={handleChange}
-                    />
-                </div>
-                <br /><br />
-                <div>
-                    <label>Address: </label>
-                    <input 
-                            type="text"
-                            value={customer.address}
-                            name="address"
-                            onChange={handleChange}
-                        />
-                </div>
-                <br /><br />
-                <div>
-                    <label>Phone number: </label>
-                    <input 
-                        type="text"
-                        value={customer.phoneNumber}
-                        name="phoneNumber"
-                        onChange={handleChange}
-                    />    
-                </div>
-            </div>
-            <br /><br />
-            <input className="btn btn-success" type="submit" value="Register"></input>
-        </form>
+        <>
+            <head>
+                <title>Register customer</title>
+            </head>
+            <body>
+                <form onSubmit={registerCustomer}>
+                    <div>
+                        <div>
+                            <label>Name: </label>
+                            <input 
+                                type="text"
+                                value={customer.name}
+                                name="name"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <br /><br />
+                        <div>
+                            <label>Ssn: </label>
+                            <input 
+                                type="text"
+                                value={customer.ssn}
+                                name="ssn"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <br /><br />
+                        <div>
+                            <label>Birth Day: </label> 
+                            <input 
+                                type="date"
+                                value={customer.birthDay}
+                                name="birthDay"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <br /><br />
+                        <div>
+                            <label>Email: </label>
+                            <input 
+                                type="email"
+                                value={customer.email}
+                                name="email"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <br /><br />
+                        <div>
+                            <label>Address: </label>
+                            <input 
+                                    type="text"
+                                    value={customer.address}
+                                    name="address"
+                                    onChange={handleChange}
+                                />
+                        </div>
+                        <br /><br />
+                        <div>
+                            <label>Phone number: </label>
+                            <input 
+                                type="text"
+                                value={customer.phoneNumber}
+                                name="phoneNumber"
+                                onChange={handleChange}
+                            />    
+                        </div>
+                    </div>
+                    <br /><br />
+                    <input className="btn btn-success" type="submit" value="Register"></input>
+                </form>
+            </body>
+        </>
     )
 }

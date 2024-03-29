@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.api.v1.constants.HttpStatusCodes;
 import com.api.v1.customer.Customer;
 import com.api.v1.customer.CustomerRepository;
+import com.api.v1.customer.exceptions.DuplicatedCustomerException;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -20,9 +21,14 @@ public class RegisterCustomerService implements RegisterCustomer {
 
     @Override
     public Future<ResponseEntity<Void>> register(@NotNull RegisterCustomerDTO dto) {
+        if (isCustomerAlreadyPersisted(dto.ssn())) throw new DuplicatedCustomerException(dto.ssn());
         Customer customer = new Customer(dto);
         repository.save(customer);
         return HttpStatusCodes.CREATED_201;
+    }
+
+    private boolean isCustomerAlreadyPersisted(String ssn) {
+        return repository.findBySsn(ssn).isPresent();
     }
 
 }
