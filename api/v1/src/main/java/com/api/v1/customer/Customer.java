@@ -1,7 +1,6 @@
 package com.api.v1.customer;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.UUID;
 
 import com.api.v1.customer.register.RegisterCustomerDTO;
@@ -29,7 +28,7 @@ public class Customer {
     private String ssn;
 
     @Column(nullable = false)
-    private LocalDate birthDay;
+    private Date birthDay;
     
     @Column(nullable = false)
     private String email;
@@ -43,7 +42,7 @@ public class Customer {
     public Customer(RegisterCustomerDTO dto) {
         this.name = dto.name();
         this.ssn = dto.ssn();
-        this.birthDay = LocalDate.parse(dto.birthDay(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        this.birthDay = dto.birthDay();
         this.email = dto.email();
         this.address = dto.address();
         this.phoneNumber = dto.phoneNumber();

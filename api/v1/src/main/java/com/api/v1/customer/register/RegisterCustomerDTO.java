@@ -1,5 +1,7 @@
 package com.api.v1.customer.register;
 
+import java.util.Date;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -12,7 +14,7 @@ public record RegisterCustomerDTO(
     String ssn,
 
     @NotBlank
-    String birthDay,
+    Date birthDay,
 
     @NotBlank
     String email,
