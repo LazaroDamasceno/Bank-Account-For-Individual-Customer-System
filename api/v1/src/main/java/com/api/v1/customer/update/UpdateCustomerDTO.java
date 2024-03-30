@@ -16,11 +16,11 @@ public record UpdateCustomerDTO(
     String email,
 
     @NotBlank
-    @Size(min=10, max=10, message="Phone number has 10 digits.")
-    String phoneNumber,
+    String address,
 
     @NotBlank
-    String address
+    @Size(min=10, max=10, message="Phone number has 10 digits.")
+    String phoneNumber
 ) {
     
 }

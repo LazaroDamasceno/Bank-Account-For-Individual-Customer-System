@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.api.v1.customer.register.RegisterCustomerDTO;
-import com.api.v1.customer.update.UpdateCustomerDTO;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -43,14 +42,6 @@ public class Customer {
     public Customer(RegisterCustomerDTO dto) {
         this.name = dto.name();
         this.ssn = dto.ssn();
-        this.birthDay = dto.birthDay();
-        this.email = dto.email();
-        this.address = dto.address();
-        this.phoneNumber = dto.phoneNumber();
-    }
-
-    public void  updateCustomer(UpdateCustomerDTO dto) {
-        this.name = dto.name();
         this.birthDay = dto.birthDay();
         this.email = dto.email();
         this.address = dto.address();
