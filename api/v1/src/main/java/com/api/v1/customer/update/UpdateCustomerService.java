@@ -14,6 +14,7 @@ import com.api.v1.customer.exceptions.CustomerNotFoundException;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -23,13 +24,24 @@ public class UpdateCustomerService implements UpdateCustomer {
     private final CustomerRepository repository;
     
     @Override
-    public Future<ResponseEntity<Void>> update(@NotBlank String ssn, @NotNull UpdateCustomerDTO dto) {
+    public Future<ResponseEntity<Void>> update(
+        @NotBlank 
+        @Size(min=9, max=9, message="Phone number has 9 digits.") 
+        String ssn, 
+        
+        @NotNull UpdateCustomerDTO dto
+    ) {
         Customer customer = findCustomerBySsn(ssn);
         customer.updateCustomer(dto);
+        repository.save(customer);
         return HttpStatusCodes.NO_CONTENT_204;
     }
 
-    private Customer findCustomerBySsn(String ssn) {
+    private Customer findCustomerBySsn(
+            @NotBlank 
+            @Size(min=9, max=9, message="Phone number has 9 digits.") 
+            String ssn
+    ) {
         Optional<Customer> optional = repository.findBySsn(ssn);
         if (optional.isEmpty()) throw new CustomerNotFoundException(ssn);
         return optional.get();
