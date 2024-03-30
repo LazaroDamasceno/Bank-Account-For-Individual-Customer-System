@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class DeleteAllService implements DeleteAll {
+public class DeleteAllCustomersService implements DeleteAllCustomers {
 
     private final CustomerRepository repository;
 

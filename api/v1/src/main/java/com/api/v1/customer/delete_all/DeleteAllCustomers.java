@@ -4,7 +4,7 @@ import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
 
-public interface DeleteAll {
+public interface DeleteAllCustomers {
 
     Future<ResponseEntity<Void>> deleteAll();
     

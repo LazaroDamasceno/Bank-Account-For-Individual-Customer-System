@@ -14,9 +14,9 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("api/v1/customers")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:5173/")
-public class DeleteAllController implements DeleteAll {
+public class DeleteAllCustomersController implements DeleteAllCustomers {
 
-    private final DeleteAllService service;
+    private final DeleteAllCustomersService service;
 
     @Override
     @DeleteMapping
