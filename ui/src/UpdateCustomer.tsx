@@ -24,7 +24,7 @@ export const UpdateCustomer = () => {
     }
 
     async function updateCustomer() {
-        await axios.put(`http://localhost:8080/api/v1/customer/${ssn}`)
+        await axios.put(`http://localhost:8080/api/v1/customer/${ssn.ssn}`, customer)
     }
 
     return (

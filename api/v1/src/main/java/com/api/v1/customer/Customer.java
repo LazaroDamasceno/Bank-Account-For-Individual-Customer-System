@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import com.api.v1.customer.register.RegisterCustomerDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -28,6 +29,7 @@ public class Customer {
     private String ssn;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date birthDay;
     
     @Column(nullable = false)
