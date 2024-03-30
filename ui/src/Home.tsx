@@ -22,6 +22,14 @@ export const Home = () => {
                 <li>
                     <Link to="/delete-all-customers">Delete all customers</Link>
                 </li>
+                <br />
+                <li>
+                    <Link to="/find-all-customers"> Find all customers</Link>
+                </li>
+                <br />
+                <li>
+                    <Link to="/find-all-bank-accounts"> Find all bank accounts</Link>
+                </li>
             </ul>
         </>
     )
