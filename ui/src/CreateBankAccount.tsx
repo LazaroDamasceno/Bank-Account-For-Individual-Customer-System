@@ -18,7 +18,7 @@ export const CreateBankAccount = () => {
     return (
         <>
             <head>
-            <title>Create banka account</title>
+                <title>Create banka account</title>
             </head>
             <body>
                 <form onSubmit={create}>
