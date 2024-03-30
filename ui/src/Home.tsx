@@ -12,15 +12,15 @@ export const Home = () => {
                 </li>
                 <br/>
                 <li>
-                    <Link to="/delete-all-customers">Delete all customers</Link>
-                </li>
-                <br/>
-                <li>
                     <Link to="/update-customer">Updated customer</Link>
                 </li>
                 <br />
                 <li>
                     <Link to="/create-bank-account">Create bank account</Link>
+                </li>
+                <br/>
+                <li>
+                    <Link to="/delete-all-customers">Delete all customers</Link>
                 </li>
             </ul>
         </>
