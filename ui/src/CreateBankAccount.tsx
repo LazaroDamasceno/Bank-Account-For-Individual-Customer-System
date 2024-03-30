@@ -1,39 +1,38 @@
 import axios from "axios"
 import { useState } from "react"
 
-export const DeleteCustomerBySsn = () => {
+export const CreateBankAccount = () => {
 
     const [ssn, setSsn] = useState({
         ssn: ''
     })
 
-    async function deleteBySsn() {
-        await axios.delete(`http://localhost:8080/api/v1/customer/${ssn.ssn}`)
+    async function create() {
+        await axios.post(`http://localhost:8080/api/v1/bank-account/${ssn.ssn}`)
     }
 
     const handleChange = (event: any) => {
         setSsn({...ssn, [event.target.name]:event.target.value})
     }
 
-
     return (
         <>
             <head>
-                <title>Delete customer by ssn</title>
+            <title>Create banka account</title>
             </head>
             <body>
-                <form onSubmit={deleteBySsn}>
+                <form onSubmit={create}>
                     <div>
                         <label>SSN: </label>
                         <input 
+                            type="text" 
+                            name="ssn" 
+                            value={ssn.ssn} 
                             onChange={handleChange}
-                            value={ssn.ssn}
-                            type="text"
-                            name="ssn"
                         />
                     </div>
                     <br/><br/>
-                    <input className="btn btn-warning" type="submit" value="Delete by ssn"></input>
+                    <input type="submit" className="btn btn-success" value="Create bank account" />
                 </form>
             </body>
         </>
