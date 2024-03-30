@@ -18,8 +18,9 @@ export const Home = () => {
                 <li>
                     <Link to="/update-customer">Updated customer</Link>
                 </li>
+                <br />
                 <li>
-                    <Link to="/delete-customer-by-ssn">Delete customer by SSN</Link>
+                    <Link to="/create-bank-account">Create bank account</Link>
                 </li>
             </ul>
         </>

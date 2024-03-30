@@ -22,7 +22,7 @@ public class CreateBankAccountController implements CreateBankAccount {
     private final CreateBankAccountService service;
 
     @Override
-    @PostMapping("api/v1/bank-account/{ssn}")
+    @PostMapping("{ssn}")
     public Future<ResponseEntity<Void>> create(
         @NotBlank
         @Size(min=9, max=9, message="Phone number has 9 digits.")
