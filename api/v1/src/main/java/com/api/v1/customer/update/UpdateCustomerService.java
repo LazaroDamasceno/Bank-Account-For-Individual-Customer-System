@@ -32,11 +32,15 @@ public class UpdateCustomerService implements UpdateCustomer {
         @NotNull UpdateCustomerDTO dto
     ) {
         Customer customer = findCustomerBySsn(ssn);
+<<<<<<< HEAD
         customer.setName(dto.name());
         customer.setBirthDay(dto.birthDay());
         customer.setEmail(dto.email());
         customer.setAddress(dto.address());
         customer.setPhoneNumber(dto.phoneNumber());
+=======
+        customer.updateCustomer(dto);
+>>>>>>> b6f9cb64c950a7b538ddbea3fed49be47d1e1b88
         repository.save(customer);
         return HttpStatusCodes.NO_CONTENT_204;
     }
