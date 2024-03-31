@@ -1,11 +1,11 @@
 package com.api.v1.bank_account.deposit;
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 public class BankAccountOwnershipException extends RuntimeException {
 
-    public BankAccountOwnershipException(@NotNull RequestBankAccountDTO dto) {
-        super("Bank account whose number is %s is not owned by customer whose ssn is %s.".formatted(dto.number(), dto.ssn()));
+    public BankAccountOwnershipException(@NotBlank String number, @NotBlank String ssn) {
+        super("Bank account whose number is %s is not owned by customer whose ssn is %s.".formatted(number, ssn));
     }
 
 }
