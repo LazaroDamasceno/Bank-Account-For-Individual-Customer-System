@@ -34,4 +34,8 @@ public class BankAccount {
         this.customer = customer;
     }
 
+    public void depositCash(double cash) {
+        this.balance += cash;
+    }
+
 }

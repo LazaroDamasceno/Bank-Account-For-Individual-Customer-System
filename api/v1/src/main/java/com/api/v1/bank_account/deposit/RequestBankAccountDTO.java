@@ -9,7 +9,10 @@ public record RequestBankAccountDTO(
     String ssn,
 
     @NotBlank
-    String number
+    String number,
+
+    @NotBlank
+    double cash
 ) {
     
 }
