@@ -21,7 +21,7 @@ export const FindAllCustomers = () => {
                 <title>Find all customers</title>
             </head>
             <body>
-            <br/><br/>
+                <br/><br/>
                 <ul>
                     <li>
                         <Link to="/register-customer">Register customer</Link>
@@ -49,6 +49,10 @@ export const FindAllCustomers = () => {
                     <br/>
                     <li>
                         <Link to="/deposit-cash">Deposit cash</Link>
+                    </li>
+                    <br/>
+                    <li>
+                        <Link to="/transfer-cash">Deposit cash</Link>
                     </li>
                 </ul>
                 <br/><br/>

@@ -34,13 +34,17 @@ public class DepositCashService implements DepositCash {
         @NotBlank
         double cash
     ) {
-        if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
-        if (isBankAccountNotFound(number)) throw new BankAccountOwnershipException(number, ssn);
-        if (isCashLessOrEqualToZero(cash)) throw new DepositException();
+        validateInput(ssn, number, cash);
         BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(number)).get();
         bankAccount.depositCash(cash);
         bankAccountRepository.save(bankAccount);
         return HttpStatusCodes.NO_CONTENT_204;
+    }
+
+    private void validateInput(String ssn, String number, double cash) {
+        if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
+        if (isBankAccountNotFound(number)) throw new BankAccountNotFoundException(number);
+        if (isCashLessOrEqualToZero(cash)) throw new DepositException();
     }
 
     private boolean isCustomerNotFound(String ssn) {

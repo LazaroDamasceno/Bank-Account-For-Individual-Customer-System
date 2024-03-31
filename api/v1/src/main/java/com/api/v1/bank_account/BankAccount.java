@@ -38,4 +38,8 @@ public class BankAccount {
         this.balance += cash;
     }
 
+    public void withDrawnCash(double cash) {
+        this.balance -= cash;
+    }
+
 }

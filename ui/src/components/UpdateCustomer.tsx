@@ -63,6 +63,10 @@ export const UpdateCustomer = () => {
                     <li>
                         <Link to="/deposit-cash">Deposit cash</Link>
                     </li>
+                    <br/>
+                    <li>
+                        <Link to="/transfer-cash">Deposit cash</Link>
+                    </li>
                 </ul>
                 <br/><br/>
                 <hr/><hr/>

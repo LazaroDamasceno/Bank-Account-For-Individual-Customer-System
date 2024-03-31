@@ -2,32 +2,30 @@ import axios from "axios"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export const RegisterCustomer= () => {
+export const TransferCash = () => {
 
-    const [customer, setCustomer] = useState({
-        name: '',
+    const [bankAccount, setBankAccount] = useState({
         ssn: '',
-        birthDay: '',
-        email: '',
-        address: '',
-        phoneNumber: ''
+        number1: '',
+        cash: 0,
+        number2: ''
     })
 
     const handleChange = (event: any) => {
-        setCustomer({...customer, [event.target.name]:event.target.value})
+        setBankAccount({...bankAccount, [event.target.name]:event.target.value})
     }
 
-    async function registerCustomer() {
-        await axios.post("http://localhost:8080/api/v1/customer", customer)
+    async function transfer() {
+        await axios.patch(`http://localhost:8080/api/v1/bank-account/${bankAccount.ssn}/${bankAccount.number1}/${bankAccount.cash}/${bankAccount.number2}`)
     }
 
     return (
         <>
             <head>
-                <title>Register customer</title>
+                <title>Transfer cash</title>
             </head>
             <body>
-            <br/><br/>
+                <br/><br/>
                 <ul>
                     <li>
                         <Link to="/register-customer">Register customer</Link>
@@ -63,70 +61,51 @@ export const RegisterCustomer= () => {
                 </ul>
                 <br/><br/>
                 <hr/><hr/>
-                <form onSubmit={registerCustomer}>
+                <form onSubmit={transfer}>
                     <div>
-                        <label>Name: </label>
+                        <label>SSn of the person who's going to transfer cash:</label>
                         <input 
-                            type="text"
-                            value={customer.name}
-                            name="name"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Ssn: </label>
-                         <input 
-                            type="text"
-                            value={customer.ssn}
                             name="ssn"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Birth Day: </label> 
-                        <input 
-                            type="date"
-                            value={customer.birthDay}
-                            name="birthDay"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Email: </label>
-                        <input 
-                            type="email"
-                            value={customer.email}
-                            name="email"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Address: </label>
-                        <input 
-                                type="text"
-                                value={customer.address}
-                                name="address"
-                                onChange={handleChange}
-                            />
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Phone number: </label>
-                        <input 
                             type="text"
-                            value={customer.phoneNumber}
-                            name="phoneNumber"
+                            value={bankAccount.ssn}
                             onChange={handleChange}
-                        />    
+                        />
                     </div>
                     <br /><br />
-                    <input className="btn btn-success" type="submit" value="Register"></input>
+                    <div>
+                        <label>SSn of the person who's going to transfer cash:</label>
+                        <input 
+                            name="number1"
+                            type="text"
+                            value={bankAccount.number1}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <br /><br />
+                    <div>
+                        <label>SSn of the person who's going to transfer cash:</label>
+                        <input 
+                            name="cash"
+                            type="number"
+                            value={bankAccount.cash}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <br /><br />
+                    <div>
+                        <label>SSn of the person who's going to transfer cash:</label>
+                        <input 
+                            name="number2"
+                            type="text"
+                            value={bankAccount.number2}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <br /><br />
+                    <input className="btn btn-success" type="submit" value="Transfer" />
                 </form>
             </body>
         </>
     )
+
 }
