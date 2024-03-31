@@ -26,7 +26,7 @@ public class BankAccount {
 
     private double balance = 0.0;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "v1_customer")
     private Customer customer;
 
