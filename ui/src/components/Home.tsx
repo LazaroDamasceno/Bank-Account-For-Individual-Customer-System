@@ -30,6 +30,10 @@ export const Home = () => {
                 <li>
                     <Link to="/find-all-bank-accounts"> Find all bank accounts</Link>
                 </li>
+                <br/>
+                <li>
+                    <Link to="/deposit-cash">Deposit cash</Link>
+                </li>
             </ul>
         </>
     )

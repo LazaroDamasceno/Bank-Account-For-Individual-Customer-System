@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+
 
 export const FindAllBankAccounts = () => {
 
@@ -19,6 +21,38 @@ export const FindAllBankAccounts = () => {
                 <title>Find all bank accounts</title>
             </head>
             <body>
+            <br/><br/>
+                <ul>
+                    <li>
+                        <Link to="/register-customer">Register customer</Link>
+                    </li>
+                    <br/>
+                    <li>
+                        <Link to="/update-customer">Updated customer</Link>
+                    </li>
+                    <br />
+                    <li>
+                        <Link to="/create-bank-account">Create bank account</Link>
+                    </li>
+                    <br/>
+                    <li>
+                        <Link to="/delete-all-customers">Delete all customers</Link>
+                    </li>
+                    <br />
+                    <li>
+                        <Link to="/find-all-customers"> Find all customers</Link>
+                    </li>
+                    <br />
+                    <li>
+                        <Link to="/find-all-bank-accounts"> Find all bank accounts</Link>
+                    </li>
+                    <br/>
+                    <li>
+                        <Link to="/deposit-cash">Deposit cash</Link>
+                    </li>
+                </ul>
+                <br/><br/>
+                <hr/><hr/>
                 <table>
                     <tr>
                         <th>Number</th>

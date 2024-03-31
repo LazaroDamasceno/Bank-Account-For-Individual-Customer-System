@@ -1,11 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { RegisterCustomer } from "./RegisterCustomer";
-import { DeleteAllCustomers } from "./DeleteAllCustomers";
-import { Home } from "./Home";
-import { UpdateCustomer } from "./UpdateCustomer";
-import { CreateBankAccount } from "./CreateBankAccount";
-import { FindAllCustomers } from "./FindAllCustomers";
-import { FindAllBankAccounts } from "./FindAllBankAccounts";
+import { RegisterCustomer } from "../components/RegisterCustomer";
+import { DeleteAllCustomers } from "../components/DeleteAllCustomers";
+import { Home } from "../components/Home";
+import { UpdateCustomer } from "../components/UpdateCustomer";
+import { CreateBankAccount } from "../components/CreateBankAccount";
+import { FindAllCustomers } from "../components/FindAllCustomers";
+import { FindAllBankAccounts } from "../components/FindAllBankAccounts";
+import { DepositCash } from "../components/DepositCash";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -14,7 +15,8 @@ const routes = [
   { path: "/update-customer", element: <UpdateCustomer /> },
   { path: "/create-bank-account", element: <CreateBankAccount /> },
   { path: "/find-all-customers", element: <FindAllCustomers /> },
-  { path: "/find-all-bank-accounts", element: <FindAllBankAccounts /> }
+  { path: "/find-all-bank-accounts", element: <FindAllBankAccounts /> },
+  { path: "/deposit-cash", element: <DepositCash /> }
 ];
 
 export const AppRouter = () => (
