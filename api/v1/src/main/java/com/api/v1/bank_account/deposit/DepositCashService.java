@@ -15,7 +15,7 @@ import java.util.concurrent.Future;
 
 @Service
 @RequiredArgsConstructor
-public class 3efdffb2-e303-4a70-9c90-f7dda5023511 implements DepositCash {
+public class DepositCashService implements DepositCash {
 
     private final BankAccountRepository bankAccountRepository;
     private final CustomerRepository customerRepository;
