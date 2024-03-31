@@ -36,7 +36,7 @@ public class DepositCashService implements DepositCash {
     ) {
         if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
         if (isBankAccountNotFound(number)) throw new BankAccountOwnershipException(number, ssn);
-        if (cash <= 0.0) throw new DepositException();
+        if (isCashLessOrEqualToZero(cash)) throw new DepositException();
         BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(number)).get();
         bankAccount.depositCash(cash);
         bankAccountRepository.save(bankAccount);
@@ -49,6 +49,10 @@ public class DepositCashService implements DepositCash {
 
     private boolean isBankAccountNotFound(String number) {
         return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
+    }
+
+    private boolean isCashLessOrEqualToZero(double cash) {
+        return cash <= 0.0;
     }
 
 }
