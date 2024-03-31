@@ -21,13 +21,13 @@ Finally, copy the url.
 
 ### Frontend
 
-1. Open the 1st CMD.
+1. Open a 1st CMD.
 
 2. Type `git clone https://github.com/LazaroDamasceno/Bank-Account-For-Individual-Customer-System.git`.
 
 3. Type `cd ui`.
 
-4. Type `npm run dev`.
+4. Type `npm i install; npm run dev`.
 
 5. Open a browser.
 
@@ -35,7 +35,7 @@ Finally, copy the url.
 
 ### Backend
 
-1. Open the 1st CMD.
+1. Open a 2nd CMD.
 
 2. Type `git clone https://github.com/LazaroDamasceno/Bank-Account-For-Individual-Customer-System.git`.
 
