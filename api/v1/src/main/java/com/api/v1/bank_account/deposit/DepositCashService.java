@@ -15,18 +15,18 @@ import java.util.concurrent.Future;
 
 @Service
 @RequiredArgsConstructor
-public class DepositCashService implements DepositCash {
+public class 3efdffb2-e303-4a70-9c90-f7dda5023511 implements DepositCash {
 
-    private final BankAccountRepository repository;
+    private final BankAccountRepository bankAccountRepository;
     private final CustomerRepository customerRepository;
 
     @Override
     public Future<ResponseEntity<Void>> deposit(@NotNull RequestBankAccountDTO dto) {
         if (isCustomerNotFound(dto.ssn())) throw new CustomerNotFoundException(dto.ssn());
         if (isBankAccountNotFound(dto.number())) throw new BankAccountOwnershipException(dto);
-        BankAccount bankAccount = repository.findByNumber(UUID.fromString(dto.number())).get();
+        BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(dto.number())).get();
         bankAccount.depositCash(dto.cash());
-        repository.save(bankAccount);
+        bankAccountRepository.save(bankAccount);
         return HttpStatusCodes.NO_CONTENT_204;
     }
 
@@ -35,7 +35,7 @@ public class DepositCashService implements DepositCash {
     }
 
     private boolean isBankAccountNotFound(String number) {
-        return repository.findByNumber(UUID.fromString(number)).isEmpty();
+        return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
     }
 
 }
