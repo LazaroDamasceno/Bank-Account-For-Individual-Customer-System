@@ -46,11 +46,11 @@ public class TransferCashService implements TransferCash {
         ) {
             validateInput(ssn, number1, cash, number2);
 
-            BankAccount bankAccount1 = bankAccountRepository.findByNumber(UUID.fromString(number1)).get();
+            BankAccount bankAccount1 = getBankAccount(number1);
             bankAccount1.withDrawnCash(cash);
             bankAccountRepository.save(bankAccount1);
             
-            BankAccount bankAccount2 = bankAccountRepository.findByNumber(UUID.fromString(number2)).get();
+            BankAccount bankAccount2 = getBankAccount(number2);
             bankAccount2.depositCash(cash);
             bankAccountRepository.save(bankAccount2);
             
@@ -61,26 +61,27 @@ public class TransferCashService implements TransferCash {
         if (customerRepository.findBySsn(ssn).isEmpty()) {
             throw new CustomerNotFoundException(ssn);
         }
-        if (bankAccountRepository.findByNumber(UUID.fromString(number1)).isEmpty()) {
-            throw new BankAccountNotFoundException(number1);
-        }
         if (cash <= 0.0) {
             throw new DepositException();
         }
-        if (bankAccountRepository.getBankAccount(ssn, UUID.fromString(number1)) == null) {
-            throw new BankAccountOwnershipException(ssn, number1);
+        validateBankAccount(ssn, number1, cash);
+        validateBankAccount(ssn, number2, cash);
+    }
+
+    private void validateBankAccount(String ssn, String number, double cash) {
+        if (bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty()) {
+            throw new BankAccountNotFoundException(number);
         }
-        BankAccount bankAccount1 = bankAccountRepository.findByNumber(UUID.fromString(number1)).get();
-        if (bankAccount1.getBalance() < cash) {
-            throw new NotEnoughBalanceException();
+        if (bankAccountRepository.getBankAccount(ssn, UUID.fromString(number)) == null) {
+            throw new BankAccountOwnershipException(ssn, number);
         }
-        if (bankAccountRepository.findByNumber(UUID.fromString(number2)).isEmpty()) {
-            throw new BankAccountNotFoundException(number2);
-        }
-        BankAccount bankAccount2 = bankAccountRepository.findByNumber(UUID.fromString(number2)).get();
-        if (bankAccount2.getBalance() < cash) {
+        BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(number)).get();
+        if (bankAccount.getBalance() < cash) {
             throw new NotEnoughBalanceException();
         }
     }
-    
+
+    private BankAccount getBankAccount(String number) {
+        return bankAccountRepository.findByNumber(UUID.fromString(number)).orElseThrow(() -> new BankAccountNotFoundException(number));
+    }
 }
