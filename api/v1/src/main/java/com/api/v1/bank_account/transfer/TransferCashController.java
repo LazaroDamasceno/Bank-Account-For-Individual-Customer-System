@@ -3,6 +3,7 @@ package com.api.v1.bank_account.transfer;
 import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("api/v1/bank-account")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:5173/")
 public class TransferCashController implements TransferCash {
 
     private final TransferCashService service;

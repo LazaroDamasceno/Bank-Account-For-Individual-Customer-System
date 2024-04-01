@@ -17,7 +17,7 @@ public class DepositCastController implements DepositCash {
     private final DepositCashService service;
 
     @Override
-    @PatchMapping
+    @PatchMapping("{ssn}/{number}/{cash}")
     public Future<ResponseEntity<Void>> deposit(        
         @NotBlank
         @Size(min=9, max=9, message="Ssn has 9 digits.")
