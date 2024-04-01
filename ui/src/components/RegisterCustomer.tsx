@@ -58,7 +58,7 @@ export const RegisterCustomer= () => {
                     </li>
                     <br/>
                     <li>
-                        <Link to="/transfer-cash">Deposit cash</Link>
+                    <Link to="/transfer-cash">Transfer cash</Link>
                     </li>
                 </ul>
                 <br/><br/>

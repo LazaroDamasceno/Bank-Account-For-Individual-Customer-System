@@ -1,5 +1,6 @@
 package com.api.v1.bank_account;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 import com.api.v1.customer.Customer;
@@ -24,7 +25,7 @@ public class BankAccount {
 
     private final UUID number = UUID.randomUUID();
 
-    private double balance = 0.0;
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "v1_customer")
@@ -34,12 +35,12 @@ public class BankAccount {
         this.customer = customer;
     }
 
-    public void depositCash(double cash) {
-        this.balance += cash;
+    public void depositCash(String cash) {
+        this.balance = this.balance.add(new BigDecimal(cash));
     }
 
-    public void withDrawnCash(double cash) {
-        this.balance -= cash;
+    public void withDrawnCash(String cash) {
+        this.balance = this.balance.subtract(new BigDecimal(cash));
     }
 
 }

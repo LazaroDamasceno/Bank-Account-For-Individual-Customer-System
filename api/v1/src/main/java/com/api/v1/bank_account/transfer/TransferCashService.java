@@ -1,5 +1,6 @@
 package com.api.v1.bank_account.transfer;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 import java.util.concurrent.Future;
 
@@ -35,7 +36,7 @@ public class TransferCashService implements TransferCash {
             String number1,
 
             @NotBlank
-            double cash, 
+            String cash, 
             
             @NotBlank 
             String number2
@@ -53,7 +54,7 @@ public class TransferCashService implements TransferCash {
             return HttpStatusCodes.NO_CONTENT_204;
     }   
 
-    private void validateInput(String ssn, String number1, double cash, String number2) {
+    private void validateInput(String ssn, String number1, String cash, String number2) {
         if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
         if (isBankAccountNotFound(number1)) throw new BankAccountNotFoundException(number1);
         if (isCashLessOrEqualToZero(cash)) throw new DepositException();
@@ -70,16 +71,16 @@ public class TransferCashService implements TransferCash {
         return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
     }
 
-    private boolean isCashLessOrEqualToZero(double cash) {
-        return cash <= 0.0;
+    private boolean isCashLessOrEqualToZero(String cash) {
+        return Double.parseDouble(cash) <= 0.0;
     }
 
     private boolean isBalanceZeroed(BankAccount bankAccount) {
-        return bankAccount.getBalance() <= 0.0;
+        return bankAccount.getBalance().compareTo(BigDecimal.valueOf(0.0))  == 0;
     }
 
-    private boolean isBalanceNotEnough(BankAccount bankAccount, double cash) {
-        return bankAccount.getBalance() < cash;
+    private boolean isBalanceNotEnough(BankAccount bankAccount, String cash) {
+        return bankAccount.getBalance().compareTo(new BigDecimal(cash)) == 1;
     }
     
 }

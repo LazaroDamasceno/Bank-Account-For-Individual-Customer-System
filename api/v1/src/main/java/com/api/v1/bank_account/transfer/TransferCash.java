@@ -18,7 +18,7 @@ public interface TransferCash {
         String number1,
 
         @NotBlank
-        double cash,
+        String cash,
 
         @NotBlank
         String number2

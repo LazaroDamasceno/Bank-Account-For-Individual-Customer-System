@@ -32,7 +32,7 @@ public class TransferCashController implements TransferCash {
 
             @NotBlank 
             @PathVariable
-            double cash, 
+            String cash, 
             
             @NotBlank 
             @PathVariable

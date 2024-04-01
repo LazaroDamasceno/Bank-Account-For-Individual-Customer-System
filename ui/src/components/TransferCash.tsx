@@ -7,7 +7,7 @@ export const TransferCash = () => {
     const [bankAccount, setBankAccount] = useState({
         ssn: '',
         number1: '',
-        cash: 0,
+        cash: '',
         number2: ''
     })
 
@@ -56,14 +56,14 @@ export const TransferCash = () => {
                     </li>
                     <br/>
                     <li>
-                        <Link to="/transfer-cash">Deposit cash</Link>
+                    <Link to="/transfer-cash">Transfer cash</Link>
                     </li>
                 </ul>
                 <br/><br/>
                 <hr/><hr/>
                 <form onSubmit={transfer}>
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>SSN of the person who's going to transfer cash:</label>
                         <input 
                             name="ssn"
                             type="text"
@@ -73,7 +73,7 @@ export const TransferCash = () => {
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Bank account number that transfers the cash:</label>
                         <input 
                             name="number1"
                             type="text"
@@ -83,17 +83,17 @@ export const TransferCash = () => {
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Cash to be transfered:</label>
                         <input 
                             name="cash"
-                            type="number"
+                            type="text"
                             value={bankAccount.cash}
                             onChange={handleChange}
                         />
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Bank account number that receives the cash:</label>
                         <input 
                             name="number2"
                             type="text"

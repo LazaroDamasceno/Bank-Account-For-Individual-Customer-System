@@ -18,7 +18,7 @@ public interface DepositCash {
         String number,
 
         @NotBlank
-        double cash
+        String cash
     );
 
 }

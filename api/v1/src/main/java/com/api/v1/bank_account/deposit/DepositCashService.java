@@ -32,7 +32,7 @@ public class DepositCashService implements DepositCash {
         String number,
 
         @NotBlank
-        double cash
+        String cash
     ) {
         validateInput(ssn, number, cash);
         BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(number)).get();
@@ -41,7 +41,7 @@ public class DepositCashService implements DepositCash {
         return HttpStatusCodes.NO_CONTENT_204;
     }
 
-    private void validateInput(String ssn, String number, double cash) {
+    private void validateInput(String ssn, String number, String cash) {
         if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
         if (isBankAccountNotFound(number)) throw new BankAccountNotFoundException(number);
         if (isCashLessOrEqualToZero(cash)) throw new DepositException();
@@ -55,8 +55,8 @@ public class DepositCashService implements DepositCash {
         return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
     }
 
-    private boolean isCashLessOrEqualToZero(double cash) {
-        return cash <= 0.0;
+    private boolean isCashLessOrEqualToZero(String cash) {
+        return Double.parseDouble(cash) <= 0.0;
     }
 
 }
