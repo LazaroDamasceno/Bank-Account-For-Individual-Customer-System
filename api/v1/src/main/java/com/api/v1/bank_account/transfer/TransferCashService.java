@@ -57,38 +57,26 @@ public class TransferCashService implements TransferCash {
     }   
 
     private void validateInput(String ssn, String number1, double cash, String number2) {
-        if (isCustomerNotFound(ssn)) {
+        if (customerRepository.findBySsn(ssn).isEmpty()) {
             throw new CustomerNotFoundException(ssn);
         }
-        if (isBankAccountNotFound(number1)) {
+        if (bankAccountRepository.findByNumber(UUID.fromString(number1)).isEmpty()) {
             throw new BankAccountNotFoundException(number1);
         }
         if (isCashLessOrEqualToZero(cash)) {
             throw new DepositException();
         }
         BankAccount bankAccount1 = bankAccountRepository.findByNumber(UUID.fromString(number1)).get();
-        if (isBalanceZeroed(bankAccount1) || isBalanceNotEnough(bankAccount1, cash)) {
+        if (isBalanceNotEnough(bankAccount1, cash)) {
             throw new NotEnoughBalanceException();
         }
-        if (isBankAccountNotFound(number2)) {
+        if (bankAccountRepository.findByNumber(UUID.fromString(number2)).isEmpty()) {
             throw new BankAccountNotFoundException(number2);
         }
     }
 
-    private boolean isCustomerNotFound(String ssn) {
-        return customerRepository.findBySsn(ssn).isEmpty();
-    }
-
-    private boolean isBankAccountNotFound(String number) {
-        return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
-    }
-
     private boolean isCashLessOrEqualToZero(double cash) {
         return cash <= 0.0;
-    }
-
-    private boolean isBalanceZeroed(BankAccount bankAccount) {
-        return bankAccount.getBalance() <= 0.0;
     }
 
     private boolean isBalanceNotEnough(BankAccount bankAccount, double cash) {

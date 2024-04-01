@@ -45,17 +45,15 @@ public class DepositCashService implements DepositCash {
     }
 
     private void validateInput(String ssn, String number, double cash) {
-        if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
-        if (isBankAccountNotFound(number)) throw new BankAccountNotFoundException(number);
-        if (isCashLessOrEqualToZero(cash)) throw new DepositException();
-    }
-
-    private boolean isCustomerNotFound(String ssn) {
-        return customerRepository.findBySsn(ssn).isEmpty();
-    }
-
-    private boolean isBankAccountNotFound(String number) {
-        return bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty();
+        if (customerRepository.findBySsn(ssn).isPresent()) {
+            throw new CustomerNotFoundException(ssn);
+        }
+        if (bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty()) {
+            throw new BankAccountNotFoundException(number);
+        }
+        if (isCashLessOrEqualToZero(cash)) {
+            throw new DepositException();
+        }
     }
 
     private boolean isCashLessOrEqualToZero(double cash) {
