@@ -73,7 +73,7 @@ export const TransferCash = () => {
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Number's bank account who's going to transfer cash:</label>
                         <input 
                             name="number1"
                             type="text"
@@ -83,7 +83,7 @@ export const TransferCash = () => {
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Cash to be transfer:</label>
                         <input 
                             name="cash"
                             type="number"
@@ -93,7 +93,7 @@ export const TransferCash = () => {
                     </div>
                     <br /><br />
                     <div>
-                        <label>SSn of the person who's going to transfer cash:</label>
+                        <label>Number's bank account who's going to receive the cash:</label>
                         <input 
                             name="number2"
                             type="text"

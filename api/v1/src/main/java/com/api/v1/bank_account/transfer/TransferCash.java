@@ -5,6 +5,8 @@ import java.util.concurrent.Future;
 import org.springframework.http.ResponseEntity;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 public interface TransferCash {
@@ -17,7 +19,8 @@ public interface TransferCash {
         @NotBlank
         String number1,
 
-        @NotBlank
+        @NotNull
+        @Positive
         double cash,
 
         @NotBlank

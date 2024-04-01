@@ -15,7 +15,7 @@ export const DepositCash = () => {
     }
 
     async function deposit() {
-        axios.patch(`http://localhost:8080/api/v1/bank-account/${bankAccount.ssn}/${bankAccount.number}/${bankAccount.cash}`, bankAccount)
+        axios.patch(`http://localhost:8080/api/v1/bank-account/${bankAccount.ssn}/${bankAccount.number}/${bankAccount.cash}`)
     }
 
     return (

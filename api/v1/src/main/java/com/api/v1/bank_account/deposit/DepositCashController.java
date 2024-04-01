@@ -1,6 +1,8 @@
 package com.api.v1.bank_account.deposit;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,12 +14,12 @@ import java.util.concurrent.Future;
 @RequestMapping("api/v1/bank-account")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:5173/")
-public class DepositCastController implements DepositCash {
+public class DepositCashController implements DepositCash {
 
     private final DepositCashService service;
 
     @Override
-    @PatchMapping
+    @PatchMapping("{ssn}/{number}/{cash}")
     public Future<ResponseEntity<Void>> deposit(        
         @NotBlank
         @Size(min=9, max=9, message="Ssn has 9 digits.")
@@ -28,11 +30,13 @@ public class DepositCastController implements DepositCash {
         @PathVariable
         String number,
 
-        @NotBlank
+        @NotNull
+        @Positive
         @PathVariable
         double cash
     ) {
         return service.deposit(ssn, number, cash);
     }
+
 
 }

@@ -3,18 +3,22 @@ package com.api.v1.bank_account.transfer;
 import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("api/v1/bank-account")
 @RequiredArgsConstructor
+@CrossOrigin("http://localhost:5173/")
 public class TransferCashController implements TransferCash {
 
     private final TransferCashService service;
@@ -30,7 +34,8 @@ public class TransferCashController implements TransferCash {
             @PathVariable
             String number1,
 
-            @NotBlank 
+            @NotNull
+            @Positive
             @PathVariable
             double cash, 
             

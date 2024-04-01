@@ -7,6 +7,8 @@ import com.api.v1.customer.CustomerRepository;
 import com.api.v1.customer.exceptions.CustomerNotFoundException;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,8 @@ public class DepositCashService implements DepositCash {
         @NotBlank
         String number,
 
-        @NotBlank
+        @NotNull
+        @Positive
         double cash
     ) {
         validateInput(ssn, number, cash);
