@@ -35,9 +35,7 @@ Finally, copy the url.
 
 1. Open a 2nd CMD.
 
-2. Type `git clone https://github.com/LazaroDamasceno/Bank-Account-For-Individual-Customer-System.git`.
-
-3. Type `cd Bank-Account-For-Individual-Customer-System; cd api; cd v1; ./mvnw clean spring-boot:run`
+2. Type `cd Bank-Account-For-Individual-Customer-System; cd api; cd v1; ./mvnw clean spring-boot:run`
 
 ## Application running
 
