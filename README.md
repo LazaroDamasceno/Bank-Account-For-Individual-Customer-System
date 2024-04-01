@@ -25,13 +25,11 @@ Finally, copy the url.
 
 2. Type `git clone https://github.com/LazaroDamasceno/Bank-Account-For-Individual-Customer-System.git`.
 
-3. Type `cd ui`.
+3. Type `cd Bank-Account-For-Individual-Customer-System; cd ui; npm i install; npm run dev`.
 
-4. Type `npm i install; npm run dev`.
+4. Open a browser.
 
-5. Open a browser.
-
-6. Typeon the on search bar the localhost's link who appears.
+5. Typeon the on search bar the localhost's link who appears.
 
 ### Backend
 
@@ -39,9 +37,7 @@ Finally, copy the url.
 
 2. Type `git clone https://github.com/LazaroDamasceno/Bank-Account-For-Individual-Customer-System.git`.
 
-3. Type `cd api; cd v1`.
-
-4. Type `./mvnw clean spring-boot:run`.
+3. Type `cd Bank-Account-For-Individual-Customer-System; cd api; cd v1; ./mvnw clean spring-boot:run`
 
 ## Application running
 
