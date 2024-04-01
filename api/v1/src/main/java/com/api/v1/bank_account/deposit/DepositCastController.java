@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 @RequestMapping("api/v1/bank-account")
 @RequiredArgsConstructor
 @CrossOrigin("http://localhost:5173/")
-public class DepositCashController implements DepositCash {
+public class DepositCastController implements DepositCash {
 
     private final DepositCashService service;
 
@@ -30,7 +30,7 @@ public class DepositCashController implements DepositCash {
 
         @NotBlank
         @PathVariable
-        String cash
+        double cash
     ) {
         return service.deposit(ssn, number, cash);
     }

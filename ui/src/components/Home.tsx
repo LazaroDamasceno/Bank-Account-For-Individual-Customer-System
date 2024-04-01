@@ -34,9 +34,9 @@ export const Home = () => {
                 <li>
                     <Link to="/deposit-cash">Deposit cash</Link>
                 </li>
-                <br/>
+                <br />
                 <li>
-                    <Link to="/transfer-cash">Transfer cash</Link>
+                    <Link to="/tranfers-cash">Transfer cash</Link>
                 </li>
             </ul>
         </>

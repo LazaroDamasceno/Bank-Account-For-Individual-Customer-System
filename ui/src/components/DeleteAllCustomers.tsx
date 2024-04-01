@@ -44,7 +44,7 @@ export const DeleteAllCustomers = () => {
                     </li>
                     <br/>
                     <li>
-                    <Link to="/transfer-cash">Transfer cash</Link>
+                        <Link to="/transfer-cash">Transfer cash</Link>
                     </li>
                 </ul>
                 <br/><br/>

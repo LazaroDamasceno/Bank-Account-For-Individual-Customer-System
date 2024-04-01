@@ -7,7 +7,7 @@ export const DepositCash = () => {
     const [bankAccount, setBankAccount] = useState({
         ssn: '',
         number: '',
-        cash: ''
+        cash: 0
     })
 
     const handleChange = (event: any) => {
@@ -55,7 +55,7 @@ export const DepositCash = () => {
                     </li>
                     <br/>
                     <li>
-                        <Link to="/transfer-cash">Deposit cash</Link>
+                        <Link to="/transfer-cash">Transfer cash</Link>
                     </li>
                 </ul>
                 <br/><br/>
@@ -80,7 +80,7 @@ export const DepositCash = () => {
                     <label>Cash: </label>
                     <input 
                         onChange={handleChange}
-                        type="text"
+                        type="number"
                         name = "cash"
                         value={bankAccount.cash}        
                     />
