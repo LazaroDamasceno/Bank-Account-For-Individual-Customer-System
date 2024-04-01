@@ -51,13 +51,12 @@ public class DepositCashService implements DepositCash {
         if (bankAccountRepository.findByNumber(UUID.fromString(number)).isEmpty()) {
             throw new BankAccountNotFoundException(number);
         }
-        if (isCashLessOrEqualToZero(cash)) {
+        if (bankAccountRepository.getBankAccount(ssn, UUID.fromString(number)) == null) {
+            throw new BankAccountOwnershipException(ssn, number);
+        }
+        if (cash <= 0.0) {
             throw new DepositException();
         }
-    }
-
-    private boolean isCashLessOrEqualToZero(double cash) {
-        return cash <= 0.0;
     }
 
 }

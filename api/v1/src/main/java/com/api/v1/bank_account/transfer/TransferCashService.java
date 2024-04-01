@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.api.v1.bank_account.BankAccount;
 import com.api.v1.bank_account.BankAccountRepository;
 import com.api.v1.bank_account.deposit.BankAccountNotFoundException;
+import com.api.v1.bank_account.deposit.BankAccountOwnershipException;
 import com.api.v1.bank_account.deposit.DepositException;
 import com.api.v1.constants.HttpStatusCodes;
 import com.api.v1.customer.CustomerRepository;
@@ -63,24 +64,23 @@ public class TransferCashService implements TransferCash {
         if (bankAccountRepository.findByNumber(UUID.fromString(number1)).isEmpty()) {
             throw new BankAccountNotFoundException(number1);
         }
-        if (isCashLessOrEqualToZero(cash)) {
+        if (cash <= 0.0) {
             throw new DepositException();
         }
+        if (bankAccountRepository.getBankAccount(ssn, UUID.fromString(number1)) == null) {
+            throw new BankAccountOwnershipException(ssn, number1);
+        }
         BankAccount bankAccount1 = bankAccountRepository.findByNumber(UUID.fromString(number1)).get();
-        if (isBalanceNotEnough(bankAccount1, cash)) {
+        if (bankAccount1.getBalance() < cash) {
             throw new NotEnoughBalanceException();
         }
         if (bankAccountRepository.findByNumber(UUID.fromString(number2)).isEmpty()) {
             throw new BankAccountNotFoundException(number2);
         }
-    }
-
-    private boolean isCashLessOrEqualToZero(double cash) {
-        return cash <= 0.0;
-    }
-
-    private boolean isBalanceNotEnough(BankAccount bankAccount, double cash) {
-        return bankAccount.getBalance() < cash;
+        BankAccount bankAccount2 = bankAccountRepository.findByNumber(UUID.fromString(number2)).get();
+        if (bankAccount2.getBalance() < cash) {
+            throw new NotEnoughBalanceException();
+        }
     }
     
 }
