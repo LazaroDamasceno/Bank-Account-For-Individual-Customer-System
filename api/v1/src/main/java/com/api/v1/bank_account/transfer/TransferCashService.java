@@ -57,12 +57,22 @@ public class TransferCashService implements TransferCash {
     }   
 
     private void validateInput(String ssn, String number1, double cash, String number2) {
-        if (isCustomerNotFound(ssn)) throw new CustomerNotFoundException(ssn);
-        if (isBankAccountNotFound(number1)) throw new BankAccountNotFoundException(number1);
-        if (isCashLessOrEqualToZero(cash)) throw new DepositException();
+        if (isCustomerNotFound(ssn)) {
+            throw new CustomerNotFoundException(ssn);
+        }
+        if (isBankAccountNotFound(number1)) {
+            throw new BankAccountNotFoundException(number1);
+        }
+        if (isCashLessOrEqualToZero(cash)) {
+            throw new DepositException();
+        }
         BankAccount bankAccount1 = bankAccountRepository.findByNumber(UUID.fromString(number1)).get();
-        if (isBalanceZeroed(bankAccount1) || isBalanceNotEnough(bankAccount1, cash)) throw new NoEnoughBalanceException();
-        if (isBankAccountNotFound(number2)) throw new BankAccountNotFoundException(number2);
+        if (isBalanceZeroed(bankAccount1) || isBalanceNotEnough(bankAccount1, cash)) {
+            throw new NotEnoughBalanceException();
+        }
+        if (isBankAccountNotFound(number2)) {
+            throw new BankAccountNotFoundException(number2);
+        }
     }
 
     private boolean isCustomerNotFound(String ssn) {

@@ -1,8 +1,8 @@
 package com.api.v1.bank_account.transfer;
 
-public class NoEnoughBalanceException extends RuntimeException {
+public class NotEnoughBalanceException extends RuntimeException {
 
-    public NoEnoughBalanceException() {
+    public NotEnoughBalanceException() {
         super("Balance is not enought to be withdrawn. Please, deposit enough cash to withdraw it.");
     }
     
