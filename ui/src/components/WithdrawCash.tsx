@@ -2,29 +2,29 @@ import axios from "axios"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export const DepositCash = () => {
+export const WithdrawCash = () => {
 
-    const [bankAccount, setBankAccount] = useState({
+    const [bankAccount, setbankAccount] = useState({
         ssn: '',
         number: '',
         cash: 0
     })
 
     const handleChange = (event: any) => {
-        setBankAccount({...bankAccount, [event.target.name]:event.target.value})
+        setbankAccount({...bankAccount, [event.target.name]:event.target.value})
     }
 
-    async function deposit() {
-        axios.patch(`http://localhost:8080/api/v1/bank-account/${bankAccount.ssn}/${bankAccount.number}/${bankAccount.cash}`)
+    async function withdraw() {
+        axios.patch(`http://localhost:8080/api/v1/bank-account/ssn/${bankAccount.ssn}/number/${bankAccount.number}/cash/${bankAccount.cash}`)
     }
 
     return (
         <>
             <head>
-                <title>Deposit cash</title>
+                <title>Withdraw cash</title>
             </head>
             <body>
-                <br/><br/>
+            <br/><br/>
                 <ul>
                     <li>
                         <Link to="/register-customer">Register customer</Link>
@@ -64,35 +64,41 @@ export const DepositCash = () => {
                 </ul>
                 <br/><br/>
                 <hr/><hr/>
-                <form onSubmit={deposit}>
-                    <label>Customer's SSN: </label>
-                    <input 
-                        onChange={handleChange}
-                        type="text"
-                        name = "ssn"
-                        value={bankAccount.ssn}
-                    />
-                    <br/><br/>
-                    <label>Bank account's number: </label>
-                    <input 
-                        onChange={handleChange}
-                        type="text"
-                        name = "number"
-                        value={bankAccount.number}
-                    />
-                    <br/><br/>
-                    <label>Cash: </label>
-                    <input 
-                        onChange={handleChange}
-                        type="number"
-                        name = "cash"
-                        value={bankAccount.cash}        
-                    />
-                    <br/><br/>
-                    <input type="submit" value="Deposit" className="btn btn-success"/>
+                <form onSubmit={withdraw}>
+                    <div>
+                        <label>SSN: </label>
+                        <input 
+                            name="ssn" 
+                            type="text" 
+                            value={bankAccount.ssn}
+                            onChange={handleChange} 
+                        />
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Number: </label>
+                        <input 
+                            name="number" 
+                            type="text" 
+                            value={bankAccount.number}
+                            onChange={handleChange} 
+                        />
+                    </div>
+                    <br/>
+                    <div>
+                        <label>Cash: </label>
+                        <input 
+                            name="cash" 
+                            type="number" 
+                            value={bankAccount.cash}
+                            onChange={handleChange} 
+                        />
+                    </div>
+                    <br/>
+                    <input type="submit" value="Withdrawn" />
                 </form>
             </body>
-        </>
+        </> 
     )
 
 }

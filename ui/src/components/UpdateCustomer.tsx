@@ -67,6 +67,10 @@ export const UpdateCustomer = () => {
                     <li>
                         <Link to="/transfer-cash">Transfer cash</Link>
                     </li>
+                    <br />
+                    <li>
+                        <Link to="/withdraw-cash">Withdraw cash</Link>
+                    </li>
                 </ul>
                 <br/><br/>
                 <hr/><hr/>
