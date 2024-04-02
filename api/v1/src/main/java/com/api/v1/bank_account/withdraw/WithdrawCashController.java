@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import java.util.concurrent.Future;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/v1/bank-account")
+@CrossOrigin("http://localhost:5173/")
 public class WithdrawCashController implements WithdrawCash {
 
     private final WithdrawCashService service;
