@@ -18,7 +18,6 @@ export const RegisterCustomer= () => {
     }
 
     const registerCustomer = async () => {
-        async () => { await axios.delete("http://localhost:8080/api/v1/customers") }
         await axios.post("http://localhost:8080/api/v1/customer", customer)
     }
 
