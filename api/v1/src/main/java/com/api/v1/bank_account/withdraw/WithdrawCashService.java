@@ -40,8 +40,8 @@ public class WithdrawCashService implements WithdrawCash  {
             double cash
     ) {
         validateInput(ssn, number, cash);
-        BankAccount bankAccount = bankAccountRepository.findByNumber(UUID.fromString(number)).get();
-        bankAccount.withDrawnCash(cash);
+        BankAccount bankAccount = getBankAccount(number);
+        bankAccount.depositCash(cash);
         bankAccountRepository.save(bankAccount);
         return HttpStatusCodes.NO_CONTENT_204;
     }
@@ -63,6 +63,10 @@ public class WithdrawCashService implements WithdrawCash  {
         if (cash <= 0.0) {
             throw new DepositException();
         }
+    }
+
+    private BankAccount getBankAccount(String number) {
+        return bankAccountRepository.findByNumber(UUID.fromString(number)).orElseThrow(() -> new BankAccountNotFoundException(number));
     }
 
 }
