@@ -42,7 +42,6 @@ public class WithdrawCashService implements WithdrawCash  {
         validateInput(ssn, number, cash);
         BankAccount bankAccount = getBankAccount(number);
         bankAccount.withDrawnCash(cash);
-        bankAccount.depositCash(cash);
         bankAccountRepository.save(bankAccount);
         return HttpStatusCodes.NO_CONTENT_204;
     }
