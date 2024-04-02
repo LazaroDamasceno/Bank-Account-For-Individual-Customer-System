@@ -9,6 +9,7 @@ import { FindAllBankAccounts } from "../components/FindAllBankAccounts";
 import { DepositCash } from "../components/DepositCash";
 import { TransferCash } from "../components/TransferCash";
 import { WithdrawCash } from "../components/WithdrawCash";
+import { FindBankAccountsByCustomers } from "../components/FindBankAccountsByCustomer";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -20,7 +21,8 @@ const routes = [
   { path: "/find-all-bank-accounts", element: <FindAllBankAccounts /> },
   { path: "/deposit-cash", element: <DepositCash /> },
   { path: "/transfer-cash", element: <TransferCash /> },
-  { path: "/withdraw-cash", element: <WithdrawCash /> }
+  { path: "/withdraw-cash", element: <WithdrawCash /> },
+  { path: "/find-bank-account-by-customer/:ssn", element: <FindBankAccountsByCustomers /> }
 ];
 
 export const AppRouter = () => (

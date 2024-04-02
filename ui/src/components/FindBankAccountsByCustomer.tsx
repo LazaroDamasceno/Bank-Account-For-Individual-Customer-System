@@ -1,27 +1,28 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
-export const FindAllCustomers = () => {
+export const FindBankAccountsByCustomers = () => {
 
-    const [customers, setCustomers] = useState([])
+    const { ssn } = useParams();
+
+    const [bankaccounts, setBankAccounts] = useState([])
 
     useEffect(() => {
         const findAll = async () => {
-            const response = await axios.get("http://localhost:8080/api/v1/customers")
-            setCustomers(response.data)
+            const response = await axios.get(`http://localhost:8080/api/v1/bank-accounts/${ssn}`)
+            setBankAccounts(response.data)
         }
         findAll()
-    }, [])
+    }, [ssn])
 
- 
     return (
         <>
             <head>
-                <title>Find all customers</title>
+                <title>Find bank accounts by customer</title>
             </head>
             <body>
-                <br/><br/>
+            <br/><br/>
                 <ul>
                     <li>
                         <Link to="/register-customer">Register customer</Link>
@@ -67,21 +68,17 @@ export const FindAllCustomers = () => {
                 <hr/><hr/>
                 <table>
                     <tr>
-                        <th>Name</th>
-                        <th>SSN</th>
-                        <th>Birth Day</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone Number</th>
+                        <th>Number:</th>
+                        <th>Balance</th>
+                        <th>Owner</th>
+                        <th>Owner's SSN</th>
                     </tr>
-                    {customers.map((customer: any) => (
-                        <tr key={customer.id}>
-                            <td>{customer.name}</td>
-                            <td>{customer.ssn}</td>
-                            <td>{customer.birthDay}</td>
-                            <td>{customer.email}</td>
-                            <td>{customer.address}</td>
-                            <td>{customer.phoneNumber}</td>
+                    {bankaccounts.map((bk: any) => (
+                        <tr key={bk.id}>
+                            <td>{bk.number}</td>
+                            <td>{bk.balance}</td>
+                            <td>{bk.customer.name}</td>
+                            <td>{bk.customer.ssn}</td>
                         </tr>
                     ))}
                 </table>

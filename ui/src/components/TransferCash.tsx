@@ -62,6 +62,10 @@ export const TransferCash = () => {
                     <li>
                         <Link to="/withdraw-cash">Withdraw cash</Link>
                     </li>
+                    <br />
+                    <li>
+                        <Link to="/find-bank-account-by-customer">Find bank accounts by customer</Link>
+                    </li>
                 </ul>
                 <br/><br/>
                 <hr/><hr/>

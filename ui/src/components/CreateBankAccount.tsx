@@ -59,6 +59,10 @@ export const CreateBankAccount = () => {
                     <li>
                         <Link to="/withdraw-cash">Withdraw cash</Link>
                     </li>
+                    <br />
+                    <li>
+                        <Link to="find-bank-account-by-customer">Withdraw cash</Link>
+                    </li>
                 </ul>
                 <br/><br/>
                 <hr/><hr/>
