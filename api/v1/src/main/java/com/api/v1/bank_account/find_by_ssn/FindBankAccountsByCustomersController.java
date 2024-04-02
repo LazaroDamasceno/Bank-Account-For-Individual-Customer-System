@@ -16,7 +16,7 @@ import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("api/vq/bank-accounts")
+@RequestMapping("api/v1/bank-accounts")
 @RequiredArgsConstructor
 public class FindBankAccountsByCustomersController implements FindBankAccountsByCustomers {
 
