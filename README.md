@@ -39,4 +39,4 @@ Finally, copy the url.
 
 ## Application running
 
-Youtube video: []().
+Youtube video: [https://youtu.be/JCcLb3AT22s](https://youtu.be/JCcLb3AT22s).
