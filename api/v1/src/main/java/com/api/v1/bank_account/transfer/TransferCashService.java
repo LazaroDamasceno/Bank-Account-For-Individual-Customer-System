@@ -65,7 +65,9 @@ public class TransferCashService implements TransferCash {
             throw new DepositException();
         }
         validateBankAccount(ssn, number1, cash);
-        validateBankAccount(ssn, number2, cash);
+        if (bankAccountRepository.findByNumber(UUID.fromString(number2)).isEmpty()) {
+            throw new BankAccountNotFoundException(number2);
+        }
     }
 
     private void validateBankAccount(String ssn, String number, double cash) {
