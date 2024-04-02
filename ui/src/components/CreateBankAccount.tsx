@@ -8,7 +8,7 @@ export const CreateBankAccount = () => {
         ssn: ''
     })
 
-    async function create() {
+    const create = async () => {
         await axios.post(`http://localhost:8080/api/v1/bank-account/${ssn.ssn}`)
     }
 

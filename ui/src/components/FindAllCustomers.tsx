@@ -7,7 +7,7 @@ export const FindAllCustomers = () => {
     const [customers, setCustomers] = useState([])
 
     useEffect(() => {
-        async function findAll() {
+        const findAll = async () => {
             const response = await axios.get("http://localhost:8080/api/v1/customers")
             setCustomers(response.data)
         }

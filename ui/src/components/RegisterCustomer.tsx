@@ -17,7 +17,8 @@ export const RegisterCustomer= () => {
         setCustomer({...customer, [event.target.name]:event.target.value})
     }
 
-    async function registerCustomer() {
+    const registerCustomer = async () => {
+        async () => { await axios.delete("http://localhost:8080/api/v1/customers") }
         await axios.post("http://localhost:8080/api/v1/customer", customer)
     }
 

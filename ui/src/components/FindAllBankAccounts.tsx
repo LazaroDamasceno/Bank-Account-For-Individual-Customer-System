@@ -8,7 +8,7 @@ export const FindAllBankAccounts = () => {
     const [bankAccounts, setBankAccounts] = useState([])
 
     useEffect(() => {
-        async function findAll() {
+        const findAll = async () => {
             const response = await axios.get("http://localhost:8080/api/v1/bank-accounts")
             setBankAccounts(response.data)
         }

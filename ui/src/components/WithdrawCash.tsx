@@ -14,7 +14,7 @@ export const WithdrawCash = () => {
         setbankAccount({...bankAccount, [event.target.name]:event.target.value})
     }
 
-    async function withdraw() {
+    const withdraw = () => {
         axios.patch(`http://localhost:8080/api/v1/bank-account/ssn/${bankAccount.ssn}/number/${bankAccount.number}/cash/${bankAccount.cash}`)
     }
 
@@ -95,7 +95,7 @@ export const WithdrawCash = () => {
                         />
                     </div>
                     <br/>
-                    <input type="submit" value="Withdrawn" />
+                    <input type="submit" className="btn btn-success" value="Withdraw" />
                 </form>
             </body>
         </> 

@@ -24,7 +24,7 @@ export const UpdateCustomer = () => {
         setCustomer({...customer, [event.target.name]:event.target.value})
     }
 
-    async function updateCustomer() {
+    const updateCustomer = async () => {
         await axios.put(`http://localhost:8080/api/v1/customer/${ssn.ssn}`, customer)
     }
 

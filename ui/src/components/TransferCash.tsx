@@ -15,7 +15,7 @@ export const TransferCash = () => {
         setBankAccount({...bankAccount, [event.target.name]:event.target.value})
     }
 
-    async function transfer() {
+    const transfer = async () =>  {
         await axios.patch(`http://localhost:8080/api/v1/bank-account/${bankAccount.ssn}/${bankAccount.number1}/${bankAccount.cash}/${bankAccount.number2}`)
     }
 
