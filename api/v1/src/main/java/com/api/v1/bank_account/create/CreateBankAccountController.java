@@ -1,8 +1,7 @@
 package com.api.v1.bank_account.create;
 
-import java.util.concurrent.Future;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +22,8 @@ public class CreateBankAccountController implements CreateBankAccount {
 
     @Override
     @PostMapping("{ssn}")
-    public Future<ResponseEntity<Void>> create(
+    @Transactional
+    public ResponseEntity<Void> create(
         @NotBlank
         @Size(min=9, max=9, message="Phone number has 9 digits.")
         @PathVariable

@@ -1,9 +1,9 @@
 package com.api.v1.customer.find_all;
 
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,8 @@ public class FindAllCustomerController implements FindAllCustomer {
     
     @Override
     @GetMapping
-    public Future<ResponseEntity<List<Customer>>> findAll() {
+    @Transactional(readOnly = true)
+    public ResponseEntity<List<Customer>> findAll() {
         return service.findAll();
     }
     

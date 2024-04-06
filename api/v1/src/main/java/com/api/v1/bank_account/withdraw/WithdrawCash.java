@@ -6,11 +6,9 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import org.springframework.http.ResponseEntity;
 
-import java.util.concurrent.Future;
-
 public interface WithdrawCash {
 
-    Future<ResponseEntity<Void>> withdraw(
+    ResponseEntity<Void> withdraw(
         @NotBlank
         @Size(min=9, max=9, message="SSN has 9 digits.")
         String ssn,

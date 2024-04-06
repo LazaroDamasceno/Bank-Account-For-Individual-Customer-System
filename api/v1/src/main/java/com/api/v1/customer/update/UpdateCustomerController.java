@@ -1,8 +1,7 @@
 package com.api.v1.customer.update;
 
-import java.util.concurrent.Future;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,7 +24,8 @@ public class UpdateCustomerController implements UpdateCustomer {
 
     @Override
     @PutMapping("{ssn}")
-    public Future<ResponseEntity<Void>> update(
+    @Transactional
+    public ResponseEntity<Void> update(
         @NotBlank 
         @Size(min=9, max=9, message="Phone number has 9 digits.")
         @PathVariable 

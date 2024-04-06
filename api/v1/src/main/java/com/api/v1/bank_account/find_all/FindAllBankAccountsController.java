@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class FindAllBankAccountsController implements FindAllBankAccounts {
     
     @Override
     @GetMapping
+    @Transactional(readOnly=true)
     public Future<ResponseEntity<List<BankAccount>>> findAll() {
         return service.findAll();
     }

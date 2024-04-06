@@ -6,13 +6,12 @@ import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.concurrent.Future;
 
 @RestController
 @RequiredArgsConstructor
@@ -23,8 +22,9 @@ public class WithdrawCashController implements WithdrawCash {
     private final WithdrawCashService service;
 
     @Override
+    @Transactional
     @PatchMapping("ssn/{ssn}/number/{number}/cash/{cash}")
-    public Future<ResponseEntity<Void>> withdraw(
+    public ResponseEntity<Void> withdraw(
             @NotBlank
             @Size(min=9, max=9, message="SSN has 9 digits.")
             @PathVariable

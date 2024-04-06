@@ -1,8 +1,7 @@
 package com.api.v1.customer.register;
 
-import java.util.concurrent.Future;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +21,8 @@ public class RegisterCustomerController implements RegisterCustomer {
     
     @Override
     @PostMapping
-    public Future<ResponseEntity<Void>> register(@NotNull @RequestBody RegisterCustomerDTO dto) {
+    @Transactional
+    public ResponseEntity<Void> register(@NotNull @RequestBody RegisterCustomerDTO dto) {
         return service.register(dto);
     }
     

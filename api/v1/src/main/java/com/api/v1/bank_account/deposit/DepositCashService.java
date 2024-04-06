@@ -12,10 +12,10 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
-import java.util.concurrent.Future;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +25,8 @@ public class DepositCashService implements DepositCash {
     private final CustomerRepository customerRepository;
 
     @Override
-    public Future<ResponseEntity<Void>> deposit(        
+    @Transactional
+    public ResponseEntity<Void> deposit(        
         @NotBlank
         @Size(min=9, max=9, message="Ssn has 9 digits.")
         String ssn,

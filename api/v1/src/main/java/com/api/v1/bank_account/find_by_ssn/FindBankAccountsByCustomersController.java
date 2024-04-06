@@ -1,7 +1,6 @@
 package com.api.v1.bank_account.find_by_ssn;
 
 import java.util.List;
-import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.api.v1.bank_account.BankAccount;
 
@@ -26,7 +26,8 @@ public class FindBankAccountsByCustomersController implements FindBankAccountsBy
 
     @Override
     @GetMapping("{ssn}")
-    public Future<ResponseEntity<List<BankAccount>>> findBySsn(
+    @Transactional
+    public ResponseEntity<List<BankAccount>> findBySsn(
             @NotBlank 
             @Size(min = 9, max = 9, message = "SSN has 9 digits.") 
             @PathVariable

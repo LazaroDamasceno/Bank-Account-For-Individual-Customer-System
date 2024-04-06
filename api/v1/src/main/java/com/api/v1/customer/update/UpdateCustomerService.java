@@ -1,11 +1,10 @@
 package com.api.v1.customer.update;
 
-import java.util.concurrent.Future;
-
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.api.v1.constants.HttpStatusCodes;
 import com.api.v1.customer.Customer;
@@ -24,7 +23,8 @@ public class UpdateCustomerService implements UpdateCustomer {
     private final CustomerRepository repository;
     
     @Override
-    public Future<ResponseEntity<Void>> update(
+    @Transactional
+    public ResponseEntity<Void> update(
         @NotBlank 
         @Size(min=9, max=9, message="Phone number has 9 digits.") 
         String ssn, 

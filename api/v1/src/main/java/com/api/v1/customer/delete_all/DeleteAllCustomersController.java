@@ -1,8 +1,7 @@
 package com.api.v1.customer.delete_all;
 
-import java.util.concurrent.Future;
-
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +19,8 @@ public class DeleteAllCustomersController implements DeleteAllCustomers {
 
     @Override
     @DeleteMapping
-    public Future<ResponseEntity<Void>> deleteAll() {
+    @Transactional
+    public ResponseEntity<Void> deleteAll() {
         return service.deleteAll();
     }
     

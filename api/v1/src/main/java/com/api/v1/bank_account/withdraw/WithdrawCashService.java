@@ -15,9 +15,9 @@ import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
-import java.util.concurrent.Future;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +27,8 @@ public class WithdrawCashService implements WithdrawCash  {
     private final CustomerRepository customerRepository;
 
     @Override
-    public Future<ResponseEntity<Void>> withdraw(
+    @Transactional
+    public ResponseEntity<Void> withdraw(
             @NotBlank
             @Size(min=9, max=9, message="SSN has 9 digits.")
             String ssn,

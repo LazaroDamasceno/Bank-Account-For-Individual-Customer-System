@@ -1,7 +1,6 @@
 package com.api.v1.bank_account.transfer;
 
 import java.util.UUID;
-import java.util.concurrent.Future;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,6 +13,7 @@ import com.api.v1.bank_account.deposit.DepositException;
 import com.api.v1.constants.HttpStatusCodes;
 import com.api.v1.customer.CustomerRepository;
 import com.api.v1.customer.exceptions.CustomerNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,7 +29,8 @@ public class TransferCashService implements TransferCash {
     private final CustomerRepository customerRepository;
 
     @Override
-    public Future<ResponseEntity<Void>> transfer(
+    @Transactional
+    public ResponseEntity<Void> transfer(
             @NotBlank 
             @Size(min = 9, max = 9, message = "SSN has 9 digits.") 
             String ssn, 
