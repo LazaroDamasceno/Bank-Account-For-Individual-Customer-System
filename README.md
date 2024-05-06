@@ -37,6 +37,12 @@ Finally, copy the url.
 
 2. Type `cd Bank-Account-For-Individual-Customer-System; cd api; cd v1; ./mvnw clean spring-boot:run`
 
+## Warning
+
+To access the H2 database, type on the browser `localhost:8080/h2-console`. When the h2'c cosnsole is open, type the following:
+1. In `JDBC URL`: `jdbc:h2:mem:testdb`
+2. In `User Name`: `sa`
+
 ## Application running
 
 Youtube video: [https://youtu.be/JCcLb3AT22s](https://youtu.be/JCcLb3AT22s).
