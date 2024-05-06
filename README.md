@@ -39,7 +39,7 @@ Finally, copy the url.
 
 ## Warning
 
-To access the H2 database, type on the browser `localhost:8080/h2-console`. When the h2'c cosnsole is open, type the following:
+To access the H2 database, type on the browser `localhost:8080/h2-console`. When the H2's console is open, type the following:
 1. In `JDBC URL`: `jdbc:h2:mem:testdb`
 2. In `User Name`: `sa`
 
